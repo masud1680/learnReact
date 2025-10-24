@@ -1,26 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import Child,{Mysum} from './children'
-import Counter from './Counter'
-import HideShow from './HideShow'
+import Clock from './clock'
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [hideShow, setHideShow] = useState(false);
+  const [color, setColor] = useState("green")
 
   return (
     <>
-      <button onClick={()=>setHideShow(!hideShow)}>Toggle Click</button>
-    {
-      hideShow ? <HideShow/> : null
-    }
-    
-    <Child/>
-    <Mysum/>
-    <h1>Welcome to React.</h1>
-    <Counter/>
+    <select onChange={(event)=>setColor(event.target.value)} >
+      <option value="red">Red</option>
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+      <option value="grey">Grey</option>
+    </select>
+
+      <Clock color = {color}/>
     </>
   )
 }
